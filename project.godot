@@ -9,6 +9,41 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "Appender",
+"language": "GDScript",
+"path": "res://addons/gs_logger/appender.gd"
+}, {
+"base": "Appender",
+"class": "ConsoleAppender",
+"language": "GDScript",
+"path": "res://addons/gs_logger/appenders/console_appender.gd"
+}, {
+"base": "Appender",
+"class": "FileAppender",
+"language": "GDScript",
+"path": "res://addons/gs_logger/appenders/file_appender.gd"
+}, {
+"base": "Layout",
+"class": "HtmlLayout",
+"language": "GDScript",
+"path": "res://addons/gs_logger/layouts/html_layout.gd"
+}, {
+"base": "Reference",
+"class": "Layout",
+"language": "GDScript",
+"path": "res://addons/gs_logger/layout.gd"
+}, {
+"base": "Reference",
+"class": "Message",
+"language": "GDScript",
+"path": "res://addons/gs_logger/message.gd"
+}, {
+"base": "Layout",
+"class": "PatternLayout",
+"language": "GDScript",
+"path": "res://addons/gs_logger/layouts/pattern_layout.gd"
+}, {
 "base": "Node2D",
 "class": "Pawn",
 "language": "GDScript",
@@ -18,10 +53,23 @@ _global_script_classes=[ {
 "class": "Terrain",
 "language": "GDScript",
 "path": "res://TileMap/Terrain.gd"
+}, {
+"base": "Reference",
+"class": "Utils",
+"language": "GDScript",
+"path": "res://addons/gs_logger/utils.gd"
 } ]
 _global_script_class_icons={
+"Appender": "",
+"ConsoleAppender": "",
+"FileAppender": "",
+"HtmlLayout": "",
+"Layout": "",
+"Message": "",
+"PatternLayout": "",
 "Pawn": "",
-"Terrain": ""
+"Terrain": "",
+"Utils": ""
 }
 
 [application]
@@ -30,10 +78,18 @@ config/name="codebugs_prototype"
 run/main_scene="res://Main/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Logger="*res://addons/gs_logger/logger.gd"
+
 [display]
 
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/gs_logger/plugin.cfg" )
 
 [global]
 

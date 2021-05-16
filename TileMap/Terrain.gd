@@ -29,23 +29,22 @@ func get_terrain_path_world(from: Vector2, to: Vector2) -> PoolVector2Array:
 	return get_terrain_path(from_map, to_map)
 
 func get_terrain_path(from: Vector2, to: Vector2) -> PoolVector2Array:
-	print('Terrain.get_terrain_path: ', from, to)
+	Logger.debug('get_terrain_path from ' + str(from) + ', to ' + str(to), 'pathfinding')
 	if is_outside_map_boundaries(from):
-		print('Terrain.get_terrain_path: path_starts out-of-bounds!', _map_size, from)
+		Logger.warn('path starts out-of-bounds!', 'pathfinding')
 		return [] as PoolVector2Array
 	if is_outside_map_boundaries(to):
-		print('Terrain.get_terrain_path: path ends out-of-bounds!', _map_size, to)
+		Logger.warn('path ends out-of-bounds!', 'pathfinding')
 		return [] as PoolVector2Array
 	var start_index = _get_point_index(from)
 	var end_index = _get_point_index(to)
 	if not _astar.has_point(start_index):
-		print('Start point in path does not exist in astar')
+		Logger.warn('Start point in path does not exist in astar graph', 'pathfinding')
 	if not _astar.has_point(end_index):
-		print('End point in path does not exist in astar!')
+		Logger.warn('End point in path does not exist in astar graph', 'pathfinding')
 	var path = _astar.get_point_path(start_index, end_index)
 	if path.size() == 0:
-		print('No path found between ', from, to)
-	# print('Terrain.get_terrain_path: Path from astar: ', path, ', ', start_index, ', ', end_index)
+		Logger.warn('No path found between ' + str(from) + str(to), 'pathfinding')
 	var terrain_path: PoolVector2Array = []
 	for point in path:
 		var terrain_point = map_to_world(point) + _half_cell_size
@@ -96,7 +95,7 @@ func _get_map_size() -> Vector2:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print('Terrain._map_size', _map_size)
+	Logger.debug('Terrain map size: ' + str(_map_size), 'terrain')
 	var points = _make_walkable_points(_cells)
-	print('Terrain points ', points)
+	Logger.trace('Terrain points: ' + str(points), 'terrain')
 	_connect_walkable_points(points)

@@ -7,3 +7,6 @@ export_presets.cfg
 # Mono-specific ignores
 .mono/
 data_*/
+
+# don't commit gs_logger which can be installed via AssetLib
+addons/gs_logger

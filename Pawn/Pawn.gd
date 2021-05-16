@@ -14,7 +14,7 @@ func _ready():
 func move_to(destination: Vector2):
 	_destination = destination
 	_path = terrain.get_terrain_path_world(position, destination)
-	print('Pawn.move_to', _path)
+	Logger.fine('Pawn move to ' + str(_path))
 
 func _process(delta: float):
 	if _path.size() > 1:
@@ -24,4 +24,7 @@ func _process(delta: float):
 			position = position.linear_interpolate(_path[1], (200 * delta) / d)
 			look_at(_path[1])
 		else:
-			moving = false
+			_path.remove(1)
+		_path[0] = position
+	else:
+		moving = false
