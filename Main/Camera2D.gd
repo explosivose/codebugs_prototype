@@ -17,12 +17,12 @@ func _input(event: InputEvent):
 		# Handle camera drag toggling
 		if event.button_index == BUTTON_RIGHT:
 			if not _dragging and event.pressed:
-				Logger.debug('Start to drag camera')
+				Logger.trace('Start to drag camera')
 				_dragging = true
 				_drag_from_mouse_pos = event.position
 				_drag_from_camera_pos = position
 			elif _dragging and not event.pressed:
-				Logger.debug('Stop dragging camera')
+				Logger.trace('Stop dragging camera')
 				_dragging = false
 		if event.button_index == BUTTON_WHEEL_UP:
 			zoom.x = max(zoom.x - 0.1, MIN_ZOOM)

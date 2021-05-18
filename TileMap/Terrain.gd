@@ -7,6 +7,8 @@ extends TileMap
 
 class_name Terrain
 
+const CAKE = 36
+
 onready var _astar: AStar2D = AStar2D.new()
 onready var _cells: PoolVector2Array = get_used_cells() # map coords
 onready var _half_cell_size: Vector2 = cell_size / 2
@@ -22,6 +24,14 @@ func get_random_point() -> Vector2:
 func get_random_point_world() -> Vector2:
 	var point = get_random_point()
 	return map_to_world(point)
+	
+func get_nearest_cake(p: Vector2) -> Vector2:
+	var cake_cells = get_used_cells_by_id(CAKE)
+	var nearest = map_to_world(cake_cells[0])
+	for cake_cell in cake_cells:
+		if nearest.distance_to(p) > map_to_world(cake_cell).distance_to(p):
+			nearest = map_to_world(cake_cell)
+	return nearest
 
 func get_terrain_path_world(from: Vector2, to: Vector2) -> PoolVector2Array:
 	var from_map = world_to_map(from)
