@@ -5,7 +5,7 @@ var _drag_from_mouse_pos: Vector2
 var _drag_from_camera_pos: Vector2
 
 const MIN_ZOOM = 0.5
-const MAX_ZOOM = 2
+const MAX_ZOOM = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,8 +28,8 @@ func _input(event: InputEvent):
 			zoom.x = max(zoom.x - 0.1, MIN_ZOOM)
 			zoom.y = max(zoom.y - 0.1, MIN_ZOOM)
 		if event.button_index == BUTTON_WHEEL_DOWN:
-			zoom.x = min(zoom.x + 0.1, 2)
-			zoom.y = min(zoom.y + 0.1, 2)
+			zoom.x = min(zoom.x + 0.1, MAX_ZOOM)
+			zoom.y = min(zoom.y + 0.1, MAX_ZOOM)
 	# Handle camera dragging
 	if event is InputEventMouseMotion and _dragging:
 		position = _drag_from_camera_pos + zoom * (_drag_from_mouse_pos - event.position)
