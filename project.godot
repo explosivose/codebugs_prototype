@@ -84,6 +84,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://TileMap/Terrain.gd"
 }, {
+"base": "AStar2D",
+"class": "TerrainNav",
+"language": "GDScript",
+"path": "res://TileMap/TerrainNav.gd"
+}, {
+"base": "Node2D",
+"class": "TerrainNavDebug",
+"language": "GDScript",
+"path": "res://TileMap/TerrainNavDebug.gd"
+}, {
 "base": "Reference",
 "class": "Utils",
 "language": "GDScript",
@@ -105,6 +115,8 @@ _global_script_class_icons={
 "PatternLayout": "",
 "Pawn": "",
 "Terrain": "",
+"TerrainNav": "",
+"TerrainNavDebug": "",
 "Utils": ""
 }
 
