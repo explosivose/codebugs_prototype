@@ -1,5 +1,11 @@
 extends AStar2D
 
+# the pathfinding uses astar
+# for each walkable tilemap point there is an astar point
+# the position of the astar point is the tile's world position + an offset
+# the offset depends on the tile id
+# the astar point indices are calculated from the tilemap point
+
 class_name TerrainNav
 signal nav_updated
 

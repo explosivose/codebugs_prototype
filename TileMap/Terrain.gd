@@ -1,20 +1,7 @@
 extends TileMap
 
-# confusingly there are three coord systems at play here
-# 1) tile map coordinates
-# 2) local coordinates
-# 3) global coordinates
-
-# the pathfinding uses astar
-# for each walkable tilemap point there is an astar point
-# the position of the astar point is the tile's world position + an offset
-# the offset depends on the tile id
-# the astar point indices are calculated from the tilemap point
 
 class_name Terrain
-
-const LINE_SCENE_PATH = "res://Line/Line.tscn"
-const SQUARE_SCENE_PATH = "res://Square/Square.tscn"
 
 enum TILE {
 	CAKE = 36,
@@ -23,10 +10,6 @@ enum TILE {
 }
 
 const WALKABLE_TILE_OFFSETS = {}
-
-const ASTAR_DEBUG = true
-const ASTAR_LINE_WIDTH = 1
-const ASTAR_LINE_COLOUR = '#66ffe2'
 
 onready var _nav: TerrainNav = TerrainNav.new(self)
 
@@ -73,7 +56,6 @@ func _ready():
 	Logger.debug('Terrain used rect: ' + str(get_used_rect()))
 	_set_tile_walk_data()
 	_nav.create_nav_grid(WALKABLE_TILE_OFFSETS)
-	
 
 func _set_tile_walk_data():
 	# tile offsets are from the world position of a tile (top left corner)
