@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://TileMap/TileMap.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Ant/Ant.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Bug/Ant.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main/Camera2D.gd" type="Script" id=3]
 [ext_resource path="res://Main/Main.gd" type="Script" id=4]
+[ext_resource path="res://BugProgramEditor/BugProgramEditor.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node"]
 script = ExtResource( 4 )
@@ -13,7 +14,12 @@ script = ExtResource( 4 )
 [node name="Ant" parent="terrain" instance=ExtResource( 2 )]
 position = Vector2( 696, 360 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BugProgramEditor" parent="CanvasLayer" instance=ExtResource( 5 )]
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 752, 440 )
+position = Vector2( 856, 320 )
+anchor_mode = 0
 current = true
 script = ExtResource( 3 )

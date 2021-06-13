@@ -1,0 +1,22 @@
+[gd_scene format=2]
+
+[node name="Input" type="VBoxContainer"]
+margin_right = 106.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 106.0
+margin_bottom = 14.0
+text = "Input Name"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+margin_top = 18.0
+margin_right = 106.0
+margin_bottom = 38.0
+text = "Select Input"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://BugInstructions/Process.tscn" type="PackedScene" id=1]
+[ext_resource path="res://BugProgramEditor/ProgramEditorBody.gd" type="Script" id=2]
+[ext_resource path="res://BugProgramEditor/UploadProgram.gd" type="Script" id=3]
+
+[node name="BugProgramEditor" type="MarginContainer"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -256.0
+custom_constants/margin_top = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EditorPanel" type="PanelContainer" parent="."]
+margin_top = 20.0
+margin_right = 256.0
+margin_bottom = 580.0
+
+[node name="VContainer" type="VBoxContainer" parent="EditorPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 249.0
+margin_bottom = 553.0
+
+[node name="Header" type="VBoxContainer" parent="EditorPanel/VContainer"]
+margin_right = 242.0
+margin_bottom = 44.0
+
+[node name="ProgramSelect" type="OptionButton" parent="EditorPanel/VContainer/Header"]
+margin_right = 242.0
+margin_bottom = 20.0
+text = "Program"
+
+[node name="UploadProgram" type="Button" parent="EditorPanel/VContainer/Header"]
+margin_top = 24.0
+margin_right = 242.0
+margin_bottom = 44.0
+text = "Upload Program"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body" type="VBoxContainer" parent="EditorPanel/VContainer"]
+margin_top = 48.0
+margin_right = 242.0
+margin_bottom = 140.0
+script = ExtResource( 2 )
+
+[node name="InstructionNode" parent="EditorPanel/VContainer/Body" instance=ExtResource( 1 )]
+margin_right = 242.0
+margin_bottom = 68.0
+
+[node name="AddInstruction" type="OptionButton" parent="EditorPanel/VContainer/Body"]
+margin_top = 72.0
+margin_right = 242.0
+margin_bottom = 92.0
+text = "Add Instruction"

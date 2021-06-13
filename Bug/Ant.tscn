@@ -2,7 +2,7 @@
 
 [ext_resource path="res://dodge_assets/art/enemyWalking_1.png" type="Texture" id=1]
 [ext_resource path="res://dodge_assets/art/enemyWalking_2.png" type="Texture" id=2]
-[ext_resource path="res://Ant/Ant.gd" type="Script" id=3]
+[ext_resource path="res://Bug/Ant.gd" type="Script" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
